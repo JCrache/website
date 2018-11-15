@@ -1,0 +1,55 @@
+.contenu {
+    text-align: center;
+    color: rgb(10, 10, 83);
+    top: 63px;
+    bottom: 5%;
+    width: 90%;
+    margin: 4em 3em 3em 3em;
+    max-height: 80%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    min-height: 200px;
+    min-width: 300px;
+}
+
+.contenu img {
+    width: 100%;
+}
+
+.head {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+}
+
+.foot {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 8;
+}
+
+body {
+    margin: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.success {
+    color: green !important;
+}
+
+.fail {
+    color: red !important;
+}
+
+.button a{
+    padding: 2px 7px;
+    color: rgb(71, 13, 13);
+    text-decoration: none;
+    background-color: beige;
+    border: 1px solid brown;
+}

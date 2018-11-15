@@ -1,0 +1,60 @@
+#patates, #patates td, #patates tr {
+    padding: 0;
+    margin: 0;
+}
+
+#patates {
+    width: 100%;
+    border: none;
+    margin-bottom: 20px;
+}
+
+#patates td {
+    width: 33%;
+    border: 1px solid rgb(160, 159, 160);
+}
+
+#patates img{
+    max-width: 300px;
+    width: 100%;
+}
+
+#patate_form {
+    text-align: left;
+    margin-left: 30%;
+}
+
+#patate_form input[type="submit"] {
+    text-align: left;
+}
+
+#patate_form span {
+    margin: 2px;
+    padding-bottom: 2px;
+}
+
+#patate_form form * {
+    margin-top: 3px;
+}
+
+#commandes {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.client {
+    width: 20%;
+}
+
+.type {
+    width: 30%;
+}
+
+.quantite {
+    width: 20%;
+}
+
+.date {
+    width: 30%;
+}

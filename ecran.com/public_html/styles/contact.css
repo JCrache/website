@@ -1,0 +1,21 @@
+#contact_form {
+    width: 506px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#contact_form input[type="text"] {
+    width: 500px;
+    padding: 1px;
+}
+
+#contact_form textarea {
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 100px;
+}
+
+#contact_form span {
+    float: left;
+}
+

@@ -1,0 +1,96 @@
+#topics {
+    width: 100%;
+    border-spacing: 0px;
+}
+
+#topics tr {
+    margin: 0;
+    background-color: rgb(219, 231, 231);
+}
+
+.topic {
+    border: 1px solid grey;
+    padding: 6px;
+}
+
+.titre {
+    cursor: pointer;
+    color: rgb(119, 33, 33);
+    font-size: larger;
+    float: left;
+    text-decoration: none;
+}
+
+.auteur {
+    float: right;
+    padding-top: 2px;
+}
+
+.infos, .message {
+
+    border: 1px solid grey;
+    text-align: left;
+    padding: 0.5em;
+}
+
+.infos {
+    width: 20%;
+    vertical-align: top;
+}
+
+.message {
+    width: 80%;
+    position: relative;
+}
+
+.message form {
+    width: 100%;
+    margin: 0;
+}
+
+.infos #auteur {
+    color: #000;
+}
+
+.infos #date {
+    font-size: smaller;
+}
+
+.content {
+    width: calc(100% - 40px);
+    float: left;
+}
+
+#retour {
+    position: absolute;
+    bottom: 0;
+    right: 3px;
+    text-decoration: none;
+}
+
+#retour a {
+    text-decoration: none;
+    font-size: smaller;
+    color: rgb(39, 31, 21);
+}
+
+form {
+    text-align: left;
+    margin-top: 0;
+}
+
+form * {
+    width: calc(100% - 7px);
+    margin: 2px;
+    padding: 0;
+}
+
+form textarea {
+    padding: 1px;
+    resize: none;
+    min-height: 150px;
+}
+
+form input[type='submit'] {
+    margin-left: 4px !important;
+}
