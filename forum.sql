@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 15 Novembre 2018 à 11:44
+-- Généré le :  Lun 26 Novembre 2018 à 14:19
 -- Version du serveur :  5.7.24-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.32-0ubuntu0.16.04.1
 
@@ -42,7 +42,10 @@ INSERT INTO `commande` (`id`, `type`, `quantite`, `date_livraison`, `client`) VA
 (2, 'nouvelle', 12, '2018-11-23', 15),
 (3, 'douce', 1000, '2018-12-06', 16),
 (4, 'patate', 2, '2018-11-16', 15),
-(5, 'patate', 9, '2018-12-20', 15);
+(5, 'patate', 9, '2018-12-20', 15),
+(6, 'nouvelle', 1, '2018-11-23', 15),
+(7, 'patate', 3, '2018-11-16', 15),
+(8, 'douce', 60, '2018-11-21', 15);
 
 -- --------------------------------------------------------
 
@@ -67,7 +70,8 @@ INSERT INTO `message` (`id`, `user_id`, `topic_id`, `date`, `content`) VALUES
 (96, 15, 11, '2018-11-15 10:36:36', 'Merci!'),
 (97, 15, 12, '2018-11-15 10:37:24', 'Bonjour je veux commander des <strong>patates</strong>.'),
 (98, 14, 12, '2018-11-15 10:38:05', 'Allez sur l\'onglet patates !\r\n\r\n<a href="http://localhost/ecran.com/public_html/pages/patates.php">http://localhost/ecran.com/public_html/pages/patates.php</a>'),
-(99, 16, 12, '2018-11-15 10:39:40', 'Super votre site. J\'attends mes <em>patates</em> !');
+(99, 16, 12, '2018-11-15 10:39:40', 'Super votre site. J\'attends mes <em>patates</em> !'),
+(108, 15, 11, '2018-11-19 14:45:51', '&lt;img src=&quot;#&quot; onerror=&quot;alert()&quot;/&gt;');
 
 -- --------------------------------------------------------
 
@@ -109,6 +113,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `create_time`) VALUES
+(1, 'nouveau', 'nou@new.xd', '$2y$10$Pi2XcSVZifeHLMnjbwBrAO5sGkC2m93v2OAOUgDM8RaugP1SxfBlO', '2018-11-15 17:07:42'),
 (14, 'admin', 'admin@admin.fr', '$2y$10$YmlBPxH4VOJqpfzF56hCDubfoQBtIToxiWveFV4g7cJAaABQ4PsOa', '2018-11-15 09:56:17'),
 (15, 'jeremy', 'jeremy@jeremy.fr', '$2y$10$E8PHY8Uh1QhTRz3lW3a6Z.pG.bmOrTLnaKbZccIDgMTYtLJcw0D2.', '2018-11-15 10:36:21'),
 (16, 'bob', 'bob@bob.com', '$2y$10$1PAuBrQQMC.WEK5jIPo0JeX1HszW5qeQbjejo1r6tCOH/VOA6Td2q', '2018-11-15 10:39:08');
@@ -121,7 +126,8 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `create_time`) VALUES
 -- Index pour la table `commande`
 --
 ALTER TABLE `commande`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `client` (`client`);
 
 --
 -- Index pour la table `message`
@@ -152,38 +158,44 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT pour la table `topic`
 --
 ALTER TABLE `topic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Contraintes pour les tables exportées
 --
 
 --
+-- Contraintes pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`client`) REFERENCES `user` (`id`);
+
+--
 -- Contraintes pour la table `message`
 --
 ALTER TABLE `message`
-  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`);
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `topic`
 --
 ALTER TABLE `topic`
-  ADD CONSTRAINT `id` FOREIGN KEY (`author_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

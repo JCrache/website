@@ -1,7 +1,7 @@
 <?php
 session_start();
-if ($_SESSION['user'] == null) {
-    header('Location: /ecran.com/public_html/index.php');
+if ($_SESSION['user'] == null || !isset($_POST['message'])) {
+    header('Location: /ecran.com/public_html/pages/forum.php');
     exit();
 }
 ?>
@@ -25,18 +25,11 @@ if ($_SESSION['user'] == null) {
                 $_POST['message'] = htmlspecialchars($_POST['message']);
                 $_POST['message'] = preg_replace('#\[b\](.+)\[/b\]#i','<strong>$1</strong>',$_POST['message']);
                 $_POST['message'] = preg_replace('#\[i\](.+)\[/i\]#i','<em>$1</em>',$_POST['message']);
+                $_POST['message'] = preg_replace('#\[s\](.+)\[/s\]#i','<u>$1</u>',$_POST['message']);
                 $_POST['message'] = preg_replace('#\[color=(red|green|blue|yellow|purple|olive)\](.+)\[/color\]#i','<span style="color:$1">$2</span>',$_POST['message']);
                 $_POST['message'] = preg_replace('#https?://[a-z0-9._/-]+#i', '<a href="$0">$0</a>', $_POST['message']);
-                $bdd = new PDO('mysql:host=127.0.0.1;dbname=forum;charset=utf8','root','viveris');
-                $date = date("Y-m-d H:i:s");
-                $req = $bdd->prepare('INSERT INTO message(topic_id,user_id,date,content) VALUES(:topic_id,:user_id,:date,:content)');
-                $req->execute(array(
-                    'topic_id' => $_POST['page'],
-                    'user_id' => $_POST['author'],
-                    'date' => $date,
-                    'content' => $_POST['message'],
-                ));
-                echo '<span class="success">Message posté !</span>';
+                require('modele.php');
+                sendPost($_POST['page'],$_POST['author'],$_POST['message']);
                 $_POST['message'] = NULL;
                 ?>
                 <script>

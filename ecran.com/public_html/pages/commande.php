@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['user'] == null) {
+if ($_SESSION['user'] == null || !isset($_POST['quantite'])) {
     header('Location: /ecran.com/public_html/index.php');
     exit();
 }
@@ -21,18 +21,13 @@ if ($_SESSION['user'] == null) {
         <?php
         if ($user_is_connected) {
             if (isset($_POST['quantite'])){
-                if ($_POST['quantite'] != '') {
-                    $bdd = new PDO('mysql:host=127.0.0.1;dbname=forum;charset=utf8','root','viveris');
-                    $date = date("Y-m-d H:i:s");
-                    $req = $bdd->prepare('INSERT INTO commande(type,quantite,date_livraison,client) VALUES(:type,:quantite,:date,:id)');
-                    $req->execute(array(
-                        'type' => $_POST['type'],
-                        'quantite' => $_POST['quantite'],
-                        'date' => $_POST['date'],
-                        'id' => $_POST['id'],
-                    ));
-                    echo '<span class="success">Commande passée !</span>';
-                    $_POST['type'] = NULL;
+                if ($_POST['quantite'] != '' && $_POST['date'] != '') {
+                    require('modele.php');
+                    sendCommand($_POST['type'], $_POST['quantite'], $_POST['date'], $_POST['id']);
+                    unset($_POST);
+                }
+                else {
+                    echo '<span class="fail">Renseignez correctement les champs, patate !</span><br>';
                 }
             }
         }

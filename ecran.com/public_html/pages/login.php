@@ -20,9 +20,6 @@ if (isset($_SESSION['user'])) {
     <div class="head"><?php include('header.php')?></div>
     <div class="contenu">
         <table id="topics">
-        <?php
-        $bdd = new PDO('mysql:host=127.0.0.1;dbname=forum;charset=utf8','root','viveris');
-        ?>
         </table><br>
         <form id="login" method="post">
             <span>Nom d'utilisateur:<br>
@@ -34,13 +31,13 @@ if (isset($_SESSION['user'])) {
             <input type="submit" value="Envoyer">
         </form>
         <?php
-        if (isset($_POST['username']) AND isset($_POST['password'])){
-            if ($_POST['password'] != '' AND $_POST['username'] != '') {
+        if (isset($_POST['username']) && isset($_POST['password'])){
+            if ($_POST['password'] != '' && $_POST['username'] != '') {
                 $_POST['username'] = htmlspecialchars($_POST['username']);
                 $_POST['password'] = htmlspecialchars($_POST['password']);
-                $req = $bdd->prepare('SELECT password, id FROM user WHERE username=?');
-                $req->execute(array($_POST['username']));
-                $bdd_table = $req->fetch();
+                require('modele.php');
+                $pass = getPassword($_POST['username']);
+                $bdd_table = $pass->fetch();
                 $this_pass_is_correct = password_verify($_POST['password'],$bdd_table['password']);
                 if ($this_pass_is_correct) {
                     echo 'Vous êtes connecté';

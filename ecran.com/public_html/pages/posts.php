@@ -16,19 +16,15 @@ session_start();
     <div class="head"><?php include('header.php')?></div>
     <div class="contenu">
         <?php
-        if (isset($_GET['page'])) {
-        $bdd = new PDO('mysql:host=127.0.0.1;dbname=forum;charset=utf8','root','viveris');
-        $requete = 'SELECT DISTINCT u.username author, m.content content, m.date datevalue
-                    FROM topic t, message m
-                    INNER JOIN user u
-                    ON m.topic_id = ? AND m.user_id = u.id
-                    ORDER BY datevalue';
-        $topics = $bdd->prepare($requete);
-        $topics->execute(array($_GET['page']));
+        if (isset($_GET['page']) && $_GET['page'] > 0) {
+        require('modele.php');
+        $posts = getPosts($_GET['page']);
         ?>
-        <table id="topics">
+        <table class="topics">
         <?php
-        while ($donnees = $topics->fetch()) {
+        $there_are_posts = false;
+        while ($donnees = $posts->fetch()) {
+            $there_are_posts = true;
             ?>
             <tr>
             <td class="infos">
@@ -45,9 +41,16 @@ session_start();
         ?>
         </table><br>
         <?php
+        if (!$there_are_posts) {
+            ?>
+                <script>
+                    window.location.replace("forum.php");
+                </script>
+            <?php
+        }
         if ($user_is_connected) {
             ?>
-            <table id="topics">
+            <table class="topics">
                 <tr>
                 <td class="infos">
                     <span id="auteur"><?php echo $_SESSION['user'];?></span><br>
@@ -62,7 +65,6 @@ session_start();
                 </td>
                 </tr>
             </table>
-            
             <?php
             }
         }

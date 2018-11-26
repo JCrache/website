@@ -28,7 +28,7 @@ session_start();
         <?php
         if (isset($_POST['message'])){
             if ($_POST['message'] != ''
-             AND preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#",$_POST['mailadd'])) {
+             && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#",$_POST['mailadd'])) {
                 $retour=mail('jeremy.roquin@cpe.fr','Contact web',$_POST['message'],'From: ' . $_POST['mailadd']);
                 if($retour) {
                     echo '<span class="success">Message envoyé !</span>';

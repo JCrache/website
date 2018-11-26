@@ -22,7 +22,7 @@ session_start();
                 Les codes sont:<br>
                 <strong>24 12</strong><br><br>
                 La clé est:<br>
-                <img src="/ecran.com/public_html/images/cle.png" alt="cle">
+                <img src="/ecran.com/public_html/images/cle_54bgrz5gz.png" alt="cle">
                 <br>
                 <?php
             }
@@ -30,7 +30,7 @@ session_start();
                 ?>
                 Authentification réussie !<br><br>
                 Voici ce que vous cherchez:<br>
-                <img src="/ecran.com/public_html/images/jeu.jpg" alt="babyfoot">
+                <img src="/ecran.com/public_html/images/jeu_6e54gz95e.jpg" alt="babyfoot">
                 <br>
                 <?php
             }
@@ -40,6 +40,11 @@ session_start();
                 <a href="/ecran.com/public_html/pages/auth.php"><br><br>Essayer à nouveau</a>
                 <?php
             }
+        }
+        else {
+            ?>
+            <span>Accédez au contenu de cette page en renseignant un code dans l'onglet Authentification.</span>
+            <?php
         }
     ?>
     </div>

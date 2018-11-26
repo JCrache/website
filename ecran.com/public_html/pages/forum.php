@@ -15,12 +15,10 @@ session_start();
 <body>
     <div class="head"><?php include('header.php')?></div>
     <div class="contenu">
-        <table id="topics">
+        <table class="topics">
         <?php
-        $bdd = new PDO('mysql:host=127.0.0.1;dbname=forum;charset=utf8','root','viveris');
-        $topics = $bdd->query('SELECT u.username author, t.title titre, t.date datevalue, t.id topic_id
-                                FROM user u INNER JOIN topic t
-                                ON u.id = t.author_id');
+        require('modele.php');
+        $topics = getTopics();
         while ($donnees = $topics->fetch()) {
             ?>
             <tr>

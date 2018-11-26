@@ -1,11 +1,11 @@
-#topics {
-    width: 100%;
-    border-spacing: 0px;
+.topics {
+    width: 100% !important;
+    border-spacing: 0px !important;
 }
 
-#topics tr {
-    margin: 0;
-    background-color: rgb(219, 231, 231);
+.topics tr {
+    margin: 0 !important;
+    background-color: rgb(219, 231, 231) !important;
 }
 
 .topic {

@@ -15,19 +15,14 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/patates.css" />
+    <script type="text/javascript" src="/ecran.com/public_html/scripts/json_maker.js"></script>
 </head>
 <body>
     <div class="head"><?php include('header.php')?></div>
     <div class="contenu">
         <?php
-        $bdd = new PDO('mysql:host=127.0.0.1;dbname=forum;charset=utf8','root','viveris');
-        $requete = 'SELECT DISTINCT u.username client, c.type type, c.quantite quantite, c.date_livraison date
-                    FROM commande c
-                    INNER JOIN user u
-                    ON c.client = u.id
-                    ORDER BY date';
-        $topics = $bdd->prepare($requete);
-        $topics->execute();
+        require('modele.php');
+        $commandes = getCommandesPatates();
         ?>
         <table id="commandes">
         <tr>
@@ -37,7 +32,7 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
             <th class="date">Date de livraison voulue</th>
         </tr>
         <?php
-        while ($donnees = $topics->fetch()) {
+        while ($donnees = $commandes->fetch()) {
             ?>
             <tr>
             <td class="client">
@@ -57,6 +52,7 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
         }
         ?>
         </table><br>
+        <button type="button" onclick="window.location.href='/ecran.com/public_html/files/commandes.json'">Télécharger au format JSON</button>
     </div>
     <div class="foot"><?php include('footer.php')?></div>
 </body>
