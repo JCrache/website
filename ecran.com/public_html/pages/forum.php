@@ -4,13 +4,13 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="/ecran.com/public_html/images/fav.ico" />
+    <link rel="icon" href="/images/fav.ico" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Forum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/forum.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/forum.css" />
 </head>
 <body>
     <div class="head"><?php include('header.php')?></div>
@@ -23,7 +23,7 @@ session_start();
             ?>
             <tr>
             <td class="topic">
-                <a class="titre" href="/ecran.com/public_html/pages/posts.php?page=<?php echo $donnees['topic_id'];?>"><?php echo $donnees['titre'];?></a>
+                <a class="titre" href="/pages/posts.php?page=<?php echo $donnees['topic_id'];?>"><?php echo $donnees['titre'];?></a>
                 <span class="auteur">Par <?php echo $donnees['author'];?> le <?php echo $donnees['datevalue'];?></span>
             </td>
             </tr>

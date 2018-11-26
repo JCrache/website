@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" type="image/ico" href="/ecran.com/public_html/images/fav.ico" />
+    <link rel="icon" type="image/ico" href="/images/fav.ico" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Accueil</title>

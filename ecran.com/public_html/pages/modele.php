@@ -2,7 +2,7 @@
 
 function getBDD() {
     try {
-        $bdd = new PDO('mysql:host=127.0.0.1;dbname=forum;charset=utf8','root','viveris');
+        $bdd = new PDO('mysql:host=localhost;dbname=id7760054_forum;charset=utf8','id7760054_jcrachefr','Hostinger1^!');
         return $bdd;
     }
     catch(Exception $e) {

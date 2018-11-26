@@ -4,12 +4,12 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="/ecran.com/public_html/images/fav.ico" />
+    <link rel="icon" href="/images/fav.ico" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Accès sécurisé</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/main.css" />
 </head>
 <body>
     <div class="head"><?php include('header.php')?></div>
@@ -22,7 +22,7 @@ session_start();
                 Les codes sont:<br>
                 <strong>24 12</strong><br><br>
                 La clé est:<br>
-                <img src="/ecran.com/public_html/images/cle_54bgrz5gz.png" alt="cle">
+                <img src="/images/cle_54bgrz5gz.png" alt="cle">
                 <br>
                 <?php
             }
@@ -30,14 +30,14 @@ session_start();
                 ?>
                 Authentification réussie !<br><br>
                 Voici ce que vous cherchez:<br>
-                <img src="/ecran.com/public_html/images/jeu_6e54gz95e.jpg" alt="babyfoot">
+                <img src="/images/jeu_6e54gz95e.jpg" alt="babyfoot">
                 <br>
                 <?php
             }
             else {
                 ?>
                 Le mot de passe est incorrect.<br><br>
-                <a href="/ecran.com/public_html/pages/auth.php"><br><br>Essayer à nouveau</a>
+                <a href="/pages/auth.php"><br><br>Essayer à nouveau</a>
                 <?php
             }
         }

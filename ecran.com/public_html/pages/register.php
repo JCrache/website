@@ -1,20 +1,20 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-    header('Location: /ecran.com/public_html/index.php');
+    header('Location: /index.php');
     exit();
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="/ecran.com/public_html/images/fav.ico" />
+    <link rel="icon" href="/images/fav.ico" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Création compte</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/session.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/session.css" />
 </head>
 <body>
     <div class="head"><?php include('header.php')?></div>

@@ -1,21 +1,21 @@
 <?php
 session_start();
 if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
-    header('Location: /ecran.com/public_html/index.php');
+    header('Location: /index.php');
     exit();
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="/ecran.com/public_html/images/fav.ico" />
+    <link rel="icon" href="/images/fav.ico" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Commandes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/ecran.com/public_html/styles/patates.css" />
-    <script type="text/javascript" src="/ecran.com/public_html/scripts/json_maker.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/patates.css" />
+    <script type="text/javascript" src="/scripts/json_maker.js"></script>
 </head>
 <body>
     <div class="head"><?php include('header.php')?></div>
@@ -52,7 +52,7 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
         }
         ?>
         </table><br>
-        <button type="button" onclick="window.location.href='/ecran.com/public_html/files/commandes.json'">Télécharger au format JSON</button>
+        <button type="button" onclick="window.location.href='/files/commandes.json'">Télécharger au format JSON</button>
     </div>
     <div class="foot"><?php include('footer.php')?></div>
 </body>
